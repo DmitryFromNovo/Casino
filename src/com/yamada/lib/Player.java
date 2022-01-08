@@ -1,0 +1,60 @@
+package com.yamada.lib;
+
+import java.util.ArrayList;
+
+public class Player {
+
+    private ArrayList<Card> hand;
+    private String firstName;
+    private String secondName;
+    private int money;
+
+    public Player(ArrayList<Card> hand, String firstName, String secondName, int money) {
+        this.hand = hand;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.money = money;
+    }
+
+    public ArrayList<Card> getHand() {
+        return hand;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getSecondName() {
+        return secondName;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setHand(ArrayList<Card> hand) {
+        this.hand = hand;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "hand=" + hand +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", money=" + money +
+                '}';
+    }
+}
