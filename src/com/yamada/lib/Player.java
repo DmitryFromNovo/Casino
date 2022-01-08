@@ -6,13 +6,11 @@ public class Player {
 
     private ArrayList<Card> hand;
     private String firstName;
-    private String secondName;
     private int money;
 
-    public Player(ArrayList<Card> hand, String firstName, String secondName, int money) {
+    public Player(ArrayList<Card> hand, String firstName, int money) {
         this.hand = hand;
         this.firstName = firstName;
-        this.secondName = secondName;
         this.money = money;
     }
 
@@ -24,9 +22,6 @@ public class Player {
         return firstName;
     }
 
-    public String getSecondName() {
-        return secondName;
-    }
 
     public int getMoney() {
         return money;
@@ -40,9 +35,6 @@ public class Player {
         this.firstName = firstName;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
 
     public void setMoney(int money) {
         this.money = money;
@@ -53,7 +45,6 @@ public class Player {
         return "Player{" +
                 "hand=" + hand +
                 ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
                 ", money=" + money +
                 '}';
     }

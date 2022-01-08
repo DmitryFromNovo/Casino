@@ -1,30 +1,75 @@
 package com.yamada;
 
+import com.yamada.lib.Card;
+import com.yamada.lib.Dealer;
 import com.yamada.lib.Player;
 
+import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Gameplay {
 
     private Player player;
+    private Dealer dealer;
     private final Scanner scan = new Scanner(System.in);
+    private String command;
 
-    public void play() {
+    public void console() {
         hello();
         boolean exe = true;
-        String command;
 
         while (exe) {
             System.out.print("> ");
-            command = scan.nextLine();
+            command = (scan.nextLine()).toLowerCase(Locale.ROOT);
 
             switch (command) {
-                case "exit":
-                    exe = false;
-                    break;
+                case "exit" -> exe = false;
+                case "help" -> System.out.println(help());
+                case "play" -> play();
             }
         }
 
+    }
+
+    private void play() {
+        initPlayer();
+
+        // game session
+        boolean exe = true;
+        while (exe) {
+            dealer.fillDeck(52);
+            dealer.updateDeck();
+            player.setHand(dealer.getCard(2));
+
+            boolean isGetNewCard = false;
+            do {
+                System.out.println(player);
+                System.out.println("Взять еще одну карту? Y/n\n");
+                command = (scan.nextLine()).toLowerCase(Locale.ROOT);
+                if (command.equals("y")) {
+                    isGetNewCard = true;
+                    ArrayList<Card> temp = player.getHand();
+                    temp.add(dealer.getCard());
+                    player.setHand(temp);
+                } else {
+                    isGetNewCard = false;
+                }
+            } while (isGetNewCard);
+
+            System.out.println("Сыграть еще раз? y/N");
+            command = (scan.nextLine()).toLowerCase(Locale.ROOT);
+            exe = command.equals("y");
+
+        }
+
+    }
+
+    private String help() {
+        return "СПРАВКА ПО КОМАНДАМ:\n" +
+                "PLAY | Приступить к игре\n" +
+                "HELP | Вывести справку на экран\n" +
+                "EXIT | Выйти из приложения\n";
     }
 
     private void hello() {
@@ -33,6 +78,8 @@ public class Gameplay {
 
     private void initPlayer() {
         System.out.println("Введите ваше имя: ");
-        player.setFirstName(scan.nextLine());
+        String temp = scan.nextLine();
+        player = new Player(null, temp, 1000);
+        dealer = new Dealer();
     }
 }
