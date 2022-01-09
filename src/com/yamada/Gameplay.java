@@ -66,10 +66,12 @@ public class Gameplay {
     }
 
     private String help() {
-        return "СПРАВКА ПО КОМАНДАМ:\n" +
-                "PLAY | Приступить к игре\n" +
-                "HELP | Вывести справку на экран\n" +
-                "EXIT | Выйти из приложения\n";
+        return """
+                СПРАВКА ПО КОМАНДАМ:
+                PLAY | Приступить к игре
+                HELP | Вывести справку на экран
+                EXIT | Выйти из приложения
+                """;
     }
 
     private void hello() {

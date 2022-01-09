@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Player {
 
     private ArrayList<Card> hand;
+    private int weightCards;
     private String firstName;
     private int money;
 
@@ -22,6 +23,12 @@ public class Player {
         return firstName;
     }
 
+    public int getWeightCards() {
+        for (Card x: hand) {
+            weightCards += x.getWeight();
+        }
+        return weightCards;
+    }
 
     public int getMoney() {
         return money;
